@@ -17,6 +17,12 @@ stages:
   jobs: 
     - job: 'PublishTemplates'
       steps:
+      - task: CmdLine@2
+        inputs:
+          script: |
+            echo Write your commands here
+            
+            echo Hello world
       - task: CopyFiles@2
         displayName: 'Copy composing to: $(build.artifactstagingdirectory)'
         inputs:
