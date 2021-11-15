@@ -6,7 +6,7 @@ pool:
 
 variables:
   subscriptionId: 'd8cd2f9e-2816-4fe8-b17e-82f9204cab2e'
-  azureResourceManagerConnection: 'test2'
+  azureResourceManagerConnection: 'prod100'
   storageAccountName: 'prod100'
   storageAccountConnectionString: $STORAGECONNECTIONSTRING
   containerName: templates$(Build.BuildId)
