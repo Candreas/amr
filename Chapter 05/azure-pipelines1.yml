@@ -8,7 +8,7 @@ variables:
   subscriptionId: 'd8cd2f9e-2816-4fe8-b17e-82f9204cab2e'
   azureResourceManagerConnection: 'prod100'
   storageAccountName: 'prod100'
-  storageAccountConnectionString: "StorageV2"
+  storageAccountConnectionString: $STORAGECONNECTIONSTRING
   containerName: templates$(Build.BuildId)
 
 stages:
@@ -20,7 +20,7 @@ stages:
       - task: CmdLine@2
         inputs:
           script: |
-            echo TORAGECONNECTIONSTRING
+            echo $STORAGECONNECTIONSTRING
             
             echo Hello world
       - task: CopyFiles@2
@@ -42,7 +42,7 @@ stages:
           azureSubscription: ${{ variables.azureResourceManagerConnection }}
           scriptType: 'bash'
           scriptLocation: 'inlineScript'
-          inlineScript: 'az storage blob upload-batch --account-name ${{ variables.storageAccountName }} -d ${{ variables.containerName }} -s $(build.artifactstagingdirectory)/templates --connection-string "${{ variables.storageAccountConnectionString }}"'
+          inlineScript: 'az storage blob upload --account-name ${{ variables.storageAccountName }} -d ${{ variables.containerName }} -s $(build.artifactstagingdirectory)/templates --connection-string "${{ variables.storageAccountConnectionString }}"'
       - task: PublishBuildArtifacts@1
         displayName: 'Publish Artifact: drop'
 - stage: 'DelployTemplates'
