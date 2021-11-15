@@ -22,6 +22,7 @@ stages:
           script: |
             echo $STORAGECONNECTIONSTRING
             echo $(build.artifactstagingdirectory)
+            echo $(Build,BuildId)
             echo Hello world
       - task: CopyFiles@2
         displayName: 'Copy composing to: $(build.artifactstagingdirectory)'
