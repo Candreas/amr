@@ -20,7 +20,7 @@ stages:
       - task: CmdLine@2
         inputs:
           script: |
-            echo Write your commands here
+            echo $STORAGECONNECTIONSTRING
             
             echo Hello world
       - task: CopyFiles@2
