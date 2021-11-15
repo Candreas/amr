@@ -27,7 +27,7 @@ stages:
       - task: CopyFiles@2
         displayName: 'Copy composing to: $(build.artifactstagingdirectory)'
         inputs:
-          SourceFolder: 'Composing'
+          SourceFolder: 'Chapter 05'
           Contents:  
             '**/*'
             
