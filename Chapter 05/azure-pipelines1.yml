@@ -52,21 +52,3 @@ stages:
           artifactName: 'drop'
           downloadPath: '$(System.DefaultWorkingDirectory)'
 
-      - task: colinsalmcorner.colinsalmcorner-buildtasks.replace-tokens-task.ReplaceTokens@1
-        inputs:
-          sourcePath: '$(System.DefaultWorkingDirectory)/drop/templates/Composing/'
-          filePattern: 'Main.parameters.test.json'
-          tokenRegex: '__(\w+)__'
-
-      - task: AzureResourceManagerTemplateDeployment@3
-        inputs:
-          deploymentScope: 'Resource Group'
-          azureResourceManagerConnection: ${{ variables.azureResourceManagerConnection }}
-          subscriptionId: ${{ variables.subscriptionId }}
-          action: 'Create Or Update Resource Group'
-          resourceGroupName: 'arm-template-demo'
-          location: 'West Europe'
-          templateLocation: 'Linked artifact'
-          csmFile: '$(System.DefaultWorkingDirectory)/drop/templates/Composing/Main.json'
-          csmParametersFile: '$(System.DefaultWorkingDirectory)/drop/templates/Composing/Main.parameters.test.json'
-          deploymentMode: 'Incremental'
