@@ -1,0 +1,2 @@
+# amr
+azure resource manager 
