@@ -65,4 +65,4 @@ stages:
         inputs:
           sourcePath: '$(System.DefaultWorkingDirectory)/drop/templates/Composing/'
           filePattern: 'Main.parameters.test.json'
-          tokenRegex: '*name'
+          tokenRegex:  '(ad\w+)bc'
