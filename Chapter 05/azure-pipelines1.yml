@@ -59,4 +59,10 @@ stages:
           downloadType: 'single'
           artifactName: 'drop'
           downloadPath: '$(System.DefaultWorkingDirectory)'
-
+          
+          
+      - task: colinsalmcorner.colinsalmcorner-buildtasks.replace-tokens-task.ReplaceTokens@1
+        inputs:
+          sourcePath: '$(System.DefaultWorkingDirectory)/drop/templates/Composing/'
+          filePattern: 'Main.parameters.test.json'
+          tokenRegex: '__(\w+)__'
