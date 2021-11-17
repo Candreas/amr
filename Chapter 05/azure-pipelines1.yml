@@ -2,7 +2,7 @@ trigger:
   - master
   
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'windows-2019'
 
 variables:
   subscriptionId: 'd8cd2f9e-2816-4fe8-b17e-82f9204cab2e'
@@ -44,7 +44,7 @@ stages:
           azureSubscription: ${{ variables.azureResourceManagerConnection }}
           scriptType: 'bash'
           scriptLocation: 'inlineScript'
-          inlineScript: 'az storage blob upload-batch --account-name ${{ variables.storageAccountName }} -d ${{ variables.containerName }} -s $(build.artifactstagingdirectory)/templates --connection-string "${{ variables.storageAccountConnectionString }}"'
+          inlineScript: 'az storage blob upload-batch --account-name ${{ variables.storageAccountName }} -d ${{ variables.containerName }} -s $(build.artifactstagingdirectory)\templates --connection-string "${{ variables.storageAccountConnectionString }}"'
       - task: PublishBuildArtifacts@1
         displayName: 'Publish Artifact: drop'
 - stage: 'DelployTemplates'
