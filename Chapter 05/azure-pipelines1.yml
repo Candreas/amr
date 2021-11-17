@@ -31,11 +31,11 @@ stages:
           Contents:  
             '**/*'
             
-          TargetFolder: '$(build.artifactstagingdirectory)/templates'
+          TargetFolder: '$(build.artifactstagingdirectory)\templates'
       - task: CmdLine@2
         inputs:
           script: |
-            echo $(build.artifactstagingdirectory)/templates
+            echo $(build.artifactstagingdirectory)\templates
             
             echo Hello world
 
